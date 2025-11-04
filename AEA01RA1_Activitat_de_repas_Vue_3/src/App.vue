@@ -1,3 +1,36 @@
+<template>
+  <div class="center-box">
+    <h1>Llistat de Tasques</h1>
+
+    <div class="add-task">
+      <input v-model="textNova" placeholder="Afegeix una tasca nova" type="text"/>
+      <button @click="afegirNova">Afegir</button>
+    </div>
+
+    <div class="checkbox-container">
+      <input type="checkbox" v-model="veurePendents" id="veurePendents" />
+      <label for="veurePendents">Mostra només pendents</label>
+    </div>
+
+    <ul style="list-style: none; padding: 0; width: 100%">
+      <li v-for="tasca in tasquesVisibles" :key="tasca.id" class="task">
+        <span :style="{ textDecoration: tasca.feta ? 'line-through' : 'none' }">{{ tasca.titol }}</span>
+        <div class="task-buttons">
+          <button class="complete" @click="alternarEstat(tasca)">
+            {{ tasca.feta ? "Desmarcar" : "Completar" }}
+          </button>
+          <button class="delete" @click="borrarTasca(tasca.id)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <p class="stats">Total: {{ total }} | Pendents: {{ pendents }}</p>
+    
+  </div>
+</template>
+
 <script setup>
 import { ref, computed } from "vue";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -46,39 +79,6 @@ const total = computed(() => llistaTasques.value.length);
 const pendents = computed( () => llistaTasques.value.filter((t) => !t.feta).length);
 
 </script>
-
-<template>
-  <div class="center-box">
-    <h1>Llistat de Tasques</h1>
-
-    <div class="add-task">
-      <input v-model="textNova" placeholder="Afegeix una tasca nova" type="text"/>
-      <button @click="afegirNova">Afegir</button>
-    </div>
-
-    <div class="checkbox-container">
-      <input type="checkbox" v-model="veurePendents" id="veurePendents" />
-      <label for="veurePendents">Mostra només pendents</label>
-    </div>
-
-    <ul style="list-style: none; padding: 0; width: 100%">
-      <li v-for="tasca in tasquesVisibles" :key="tasca.id" class="task">
-        <span :style="{ textDecoration: tasca.feta ? 'line-through' : 'none' }">{{ tasca.titol }}</span>
-        <div class="task-buttons">
-          <button class="complete" @click="alternarEstat(tasca)">
-            {{ tasca.feta ? "Desmarcar" : "Completar" }}
-          </button>
-          <button class="delete" @click="borrarTasca(tasca.id)">
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
-      </li>
-    </ul>
-
-    <p class="stats">Total: {{ total }} | Pendents: {{ pendents }}</p>
-    
-  </div>
-</template>
 
 <style scoped>
 body,
