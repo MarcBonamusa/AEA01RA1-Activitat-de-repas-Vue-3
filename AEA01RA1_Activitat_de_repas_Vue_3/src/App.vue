@@ -129,11 +129,6 @@ h1 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.add-task input[type="text"]:focus {
-  outline: none;
-  border-color: #2196f3;
-}
-
 .add-task button {
   padding: 14px 24px;
   font-size: 15px;
@@ -143,14 +138,6 @@ h1 {
   cursor: pointer;
   background-color: #2196f3;
   color: white;
-}
-
-.add-task button:hover {
-  background-color: #1976d2;
-}
-
-.add-task button:active {
-  background-color: #1565c0;
 }
 
 .checkbox-container {
@@ -192,12 +179,6 @@ h1 {
 .task:hover {
   background-color: #f5f5f5;
   border-color: #d0d0d0;
-}
-
-.task span {
-  flex: 1;
-  color: #333;
-  font-weight: 500;
 }
 
 .task-buttons {
