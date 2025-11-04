@@ -140,6 +140,11 @@ h1 {
   color: white;
 }
 
+.add-task input[type="text"]:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
 .checkbox-container {
   width: 100%;
   display: flex;
